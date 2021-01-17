@@ -1,5 +1,5 @@
 /*
-Programm: Die erste GUI
+Programm: Widerstandsrechner
 Autoren: Philipp Riefer, Domenic Heidemann
 Datum: 14.01.2021
 */
