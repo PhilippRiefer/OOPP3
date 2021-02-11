@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ResistanceCalculator",
+            "request": "launch",
+            "mainClass": "ResistanceCalculator.ResistanceCalculator",
+            "projectName": "OOPP3"
+        },
+        {
+            "type": "java",
+            "name": "Launch DataQuery",
+            "request": "launch",
+            "mainClass": "DataQuery.DataQuery",
+            "projectName": "OOPP3"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

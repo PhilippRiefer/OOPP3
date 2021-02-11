@@ -1,3 +1,5 @@
+package ResistanceCalculator;
+
 /*
 Programm: Widerstandsrechner
 Autoren: Philipp Riefer, Domenic Heidemann
@@ -112,6 +114,12 @@ public class ResistanceCalculator extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == okButton) {
             
+        	// no name
+            if (firstResistorValue.getText().isEmpty() == true || secondResistorValue.getText().isEmpty() == true) {
+                System.out.println("error: fehlender Widerstandswert!");
+                return;
+            }
+        	
             Double firstResistorValueDouble = Double.parseDouble(firstResistorValue.getText());
             if (prefixBoxOne.getSelectedItem() == "Giga") {
                 firstResistorValueDouble = firstResistorValueDouble*1000000000;
@@ -149,57 +157,57 @@ public class ResistanceCalculator extends JFrame implements ActionListener{
             if (serial.isSelected() == true) {
                 Double totalResistorValueDouble = firstResistorValueDouble + secondResistorValueDouble;
 
-                simpleResult.setText(totalResistorValueDouble.toString()+" Ω");
+                simpleResult.setText(totalResistorValueDouble.toString()+" Ohm");
 
                 if (totalResistorValueDouble >= 1000000000) { // GIGA and everything above
                     totalResistorValueDouble = totalResistorValueDouble/1000000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" GΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" G Ohm");
                 }else if(totalResistorValueDouble >= 1000000){ // MEGA
                     totalResistorValueDouble = totalResistorValueDouble/1000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" MΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" M Ohm");
                 }else if(totalResistorValueDouble >= 1000){ // KILO
                     totalResistorValueDouble = totalResistorValueDouble/1000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" kΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" k Ohm");
                 }else if(totalResistorValueDouble >= 1){ // NONE
                     totalResistorValueDouble = totalResistorValueDouble*1;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" Ω");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" Ohm");
                 }else if(totalResistorValueDouble >= 0.001){ // MILLI
                     totalResistorValueDouble = totalResistorValueDouble*1000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" mΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" m Ohm");
                 }else if(totalResistorValueDouble >= 0.000001){ // MIKRO
                     totalResistorValueDouble = totalResistorValueDouble*1000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" µΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" mikro Ohm");
                 }else if(totalResistorValueDouble < 0.000001){ // NANO and everything below
                     totalResistorValueDouble = totalResistorValueDouble*1000000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" nΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" n Ohm");
                 }
 
             } else if(parallel.isSelected() == true){
                 Double totalResistorValueDouble = (firstResistorValueDouble*secondResistorValueDouble)/(firstResistorValueDouble+secondResistorValueDouble);
 
-                simpleResult.setText(totalResistorValueDouble.toString()+" Ω");
+                simpleResult.setText(totalResistorValueDouble.toString()+" Ohm");
                 
                 if (totalResistorValueDouble >= 1000000000) { // GIGA and everything above
                     totalResistorValueDouble = totalResistorValueDouble/1000000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" GΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" G Ohm");
                 }else if(totalResistorValueDouble >= 1000000){ // MEGA
                     totalResistorValueDouble = totalResistorValueDouble/1000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" MΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" M Ohm");
                 }else if(totalResistorValueDouble >= 1000){ // KILO
                     totalResistorValueDouble = totalResistorValueDouble/1000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" kΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" k Ohm");
                 }else if(totalResistorValueDouble >= 1){ // NONE
                     totalResistorValueDouble = totalResistorValueDouble*1;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" Ω");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" Ohm");
                 }else if(totalResistorValueDouble >= 0.001){ // MILLI
                     totalResistorValueDouble = totalResistorValueDouble*1000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" mΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" m Ohm");
                 }else if(totalResistorValueDouble >= 0.000001){ // MIKRO
                     totalResistorValueDouble = totalResistorValueDouble*1000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" µΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" mikro Ohm");
                 }else if(totalResistorValueDouble < 0.000001){ // NANO and everything below
                     totalResistorValueDouble = totalResistorValueDouble*1000000000;
-                    prefixResult.setText(totalResistorValueDouble.toString()+" nΩ");
+                    prefixResult.setText(totalResistorValueDouble.toString()+" n Ohm");
                 }
             } else {
                 System.out.println("error: neither serial nor parallel is selected");

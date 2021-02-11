@@ -1,3 +1,5 @@
+package DataQuery;
+
 /*
 Programm: Die erste GUI
 Autoren: Philipp Riefer, Domenic Heidemann
@@ -136,16 +138,19 @@ public class DataQuery extends JFrame implements ActionListener {
         add(resultLabel);
 
         // make the window beautiful
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // close-button behaviour
-        setSize(800, 400); // start with this
-        setResizable(true);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Double x = screenSize.getWidth()/2-300;
-        Double y = screenSize.getHeight()/2-300;
-        setLocation(x.intValue(), y.intValue());
+		pack();
+		setDefaultCloseOperation(EXIT_ON_CLOSE); // close-button behaviour
+		int frameSizeWidth = getSize().width;
+		int frameSizeHeight = getSize().height;
+		setSize(frameSizeWidth, frameSizeHeight); // start with this
+		setResizable(true);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Double x = screenSize.getWidth() / 2 - (frameSizeWidth/2);
+		Double y = screenSize.getHeight() / 2 - (frameSizeHeight/2);
+		setLocation(x.intValue(), y.intValue());
 
-        // showtime!
-        setVisible(true);
+		// showtime!
+		setVisible(true);
     }
 
     public static void main(String[] args){
